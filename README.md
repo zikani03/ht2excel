@@ -9,6 +9,18 @@ Each table is it's own Excel Sheet...
 $ ht2excel -f testdata/test.html -o data/output.xlsx
 ```
 
+## Building
+
+You will need Go 1.19+ to build it
+
+```sh
+$ git clone https://github.com/zikani03/ht2excel
+
+$ cd ht2excel
+
+$ go build 
+
+```
 ---
 
 Copyright (c) Zikani Nyirenda Mwase
