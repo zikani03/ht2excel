@@ -37,6 +37,12 @@ func main() {
 		logrus.WithError(err)
 		return
 	}
+	defer func() {
+		if err := htmlFile.Close(); err != nil {
+			logrus.WithError(err)
+			return
+		}
+	}()
 
 	doc, err := goquery.NewDocumentFromReader(htmlFile)
 	if err != nil {
