@@ -1,0 +1,6 @@
+/build/
+/dist/
+.~*
+.DS_Store
+ht2excel
+ht2excel.exe
