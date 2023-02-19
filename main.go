@@ -67,7 +67,7 @@ func main() {
 		}
 
 		sheetName := tbl.AttrOr("data-sheet-name", fmt.Sprintf("Sheet %d", st.NumTablesFound))
-		index, err := f.NewSheet(sheetName)
+		_, err := f.NewSheet(sheetName)
 		if err != nil {
 			logrus.WithError(err)
 			return
@@ -80,21 +80,6 @@ func main() {
 				return
 			}
 			f.SetSheetRow(sheetName, cell, &row)
-		}
-
-		// Set active sheet of the workbook.
-		f.SetActiveSheet(index)
-		// Save spreadsheet by the given path.
-		tmpFile, err := os.CreateTemp(os.TempDir(), "_generated_payroll.xlsx")
-		if err != nil {
-			logrus.WithError(err)
-			return
-		}
-		fullName := tmpFile.Name() + ".xlsx"
-		err = f.SaveAs(fullName)
-		if err != nil {
-			logrus.WithError(err)
-			return
 		}
 
 		st.CurrentRowNum++
